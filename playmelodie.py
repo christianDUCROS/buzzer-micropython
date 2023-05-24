@@ -40,15 +40,17 @@ def play_silence(valeur):
     pwm0.freq(440) #nombre différent de 0        
     pwm0.duty_u16(0)
     time.sleep_ms(valeur) 
-    
-
+ 
 #star wars
 SW_sequence_1 = [[A3, 500],[A3, 500], [A3, 500],[F3, 350],[C4, 150],[A3, 500],[F3, 350],[C4, 150],[A3, 650]]
 SW_sequence_2 = [[S, 500]] #silence 
 SW_sequence_3 = [[E4, 500],[E4, 500], [E4, 500],[F4, 350],[C4, 150],[G3d, 500],[F3, 350],[C4, 150],[A3, 650]]
 SW_sequence_4 = [[S, 500]]
-
 star_wars =  [SW_sequence_1,SW_sequence_2,SW_sequence_3,SW_sequence_4]
+
+#Alarme
+sequence_alarme_1 = [[A3, 500],[S, 500], [A3, 500],[S, 500],[A3, 500],[S, 500]]
+alarme = [sequence_alarme_1]
 
 def play_melodie(melodie) :  
     for i in range (len(melodie)) :
@@ -58,12 +60,9 @@ def play_melodie(melodie) :
                 play_silence(melodie[i][j][1])
             else :
                 play_note(melodie[i][j][0],melodie[i][j][1])
-play_melodie(star_wars)
 
-#Alarme
-sequence_alarme_1 = [[A3, 500],[S, 500], [A3, 500],[S, 500],[A3, 500],[S, 500]]
-
-alarme = [sequence_alarme_1]
-play_melodie(alarme)
+if __name__ == "__main__":
+    play_melodie(star_wars)
+    play_melodie(alarme)
 
 
