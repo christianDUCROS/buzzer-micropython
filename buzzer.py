@@ -1,7 +1,7 @@
 from machine import Pin, PWM
 import time
 
-def play_son(freq,duty,duree) :   
+def play_son(freq,duree,duty=32767) :   
     pwm0.freq(freq)        
     pwm0.duty_u16(duty)
     time.sleep_ms(duree - 50) #valeur
@@ -10,8 +10,8 @@ def play_son(freq,duty,duree) :
 
 if __name__ == "__main__":    
     print('son 1')
-    play_son(440,32767,1000)
+    play_son(440,1000) #duty par defaut
     time.sleep(1)
     print('son 2')
-    play_son(440,5000,1000)
+    play_son(440,1000,5000) 
     time.sleep(1)
