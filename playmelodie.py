@@ -29,17 +29,17 @@ G4d = 830
 A4 = 880
 S = 'S'
 
-def play_note(hauteur,valeur): 
-    pwm0.freq(hauteur)        
-    pwm0.duty_u16(32000)
-    time.sleep_ms(valeur- 50) #valeur
+def play_son(freq,duree, duty=32767): 
+    pwm0.freq(freq)        
+    pwm0.duty_u16(duty)
+    time.sleep_ms(duree- 50) #valeur
     pwm0.duty_u16(0)
     time.sleep_ms(50) #valeur
 
-def play_silence(valeur): 
+def play_silence(duree): 
     pwm0.freq(440) #nombre différent de 0        
     pwm0.duty_u16(0)
-    time.sleep_ms(valeur) 
+    time.sleep_ms(duree) 
  
 #star wars
 SW_sequence_1 = [[A3, 500],[A3, 500], [A3, 500],[F3, 350],[C4, 150],[A3, 500],[F3, 350],[C4, 150],[A3, 650]]
@@ -59,7 +59,7 @@ def play_melodie(melodie) :
             if melodie[i][j][0] == 'S' :
                 play_silence(melodie[i][j][1])
             else :
-                play_note(melodie[i][j][0],melodie[i][j][1])
+                play_son(melodie[i][j][0],melodie[i][j][1])
 
 if __name__ == "__main__":
     play_melodie(star_wars)
