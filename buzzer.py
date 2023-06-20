@@ -1,11 +1,12 @@
 from machine import Pin, PWM
 import time
+buzzer = PWM(Pin(0)) # branchement  
 
 def play_son(freq,duree,duty=32767) :   
-    pwm0.freq(freq)        
-    pwm0.duty_u16(duty)
+    buzzer.freq(freq)        
+    buzzer.duty_u16(duty)
     time.sleep_ms(duree - 50) #valeur
-    pwm0.duty_u16(0)
+    buzzer.duty_u16(0)
     time.sleep_ms(50) #valeur
 
 if __name__ == "__main__":    
