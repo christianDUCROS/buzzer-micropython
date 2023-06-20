@@ -1,7 +1,7 @@
 #play star wars
 from machine import Pin, PWM
 import time
-pwm0 = PWM(Pin(0))
+buzzer = PWM(Pin(0)) # branchement  
 
 
 #const hauteur notes
@@ -30,15 +30,15 @@ A4 = 880
 S = 'S'
 
 def play_son(freq,duree, duty=32767): 
-    pwm0.freq(freq)        
-    pwm0.duty_u16(duty)
+    buzzer.freq(freq)        
+    buzzer.duty_u16(duty)
     time.sleep_ms(duree- 50) #valeur
-    pwm0.duty_u16(0)
+    buzzer.duty_u16(0)
     time.sleep_ms(50) #valeur
 
 def play_silence(duree): 
-    pwm0.freq(440) #nombre différent de 0        
-    pwm0.duty_u16(0)
+    buzzer.freq(440) #nombre différent de 0        
+    buzzer.duty_u16(0)
     time.sleep_ms(duree) 
  
 #star wars
